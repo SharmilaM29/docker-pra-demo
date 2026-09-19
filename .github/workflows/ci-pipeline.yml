@@ -2,5 +2,12 @@
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy application
-        run: echo "Deployment stage started"
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Connected to deployment server"
