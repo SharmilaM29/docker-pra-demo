@@ -1,0 +1,6 @@
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy application
+        run: echo "Deployment stage started"
