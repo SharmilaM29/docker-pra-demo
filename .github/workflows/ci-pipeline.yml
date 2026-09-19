@@ -8,10 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # KEEP YOUR EXISTING BUILD STEPS HERE
     steps:
-      # your existing build commands
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t static-app:latest .
 
   deploy:
     needs: build
